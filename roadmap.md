@@ -1,0 +1,6 @@
+- [x] Restyle the existing frontend with a minimal monochrome ASCII/dotted visual language, keeping the Next.js stack and backend untouched.
+- [x] Check the public pages and basic navigation; report any preview limitations.
+- [x] Sweep remaining secondary pages (docs, FAQ, privacy, terms) to remove leftover blue accents.
+- [x] Refine home and login with ASCII branding and subtle waves; remove ornamental copy, ID badge, shield, and footer without changing auth logic.
+- [x] Apply the supplied ASCII plasma and dot-grid motion; refine home, login, FAQ, and documentation details.
+- [x] Update visible branding to PESU OAuth2 and use the supplied icon theme switcher in the top row.

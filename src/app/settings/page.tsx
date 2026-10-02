@@ -256,7 +256,7 @@ export default function SettingsPage() {
                 </Button>
               </>
             ) : (
-              <span className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 font-medium">
+              <span className="text-xs text-zinc-900 dark:text-zinc-500 flex items-center gap-1.5 font-medium">
                 <CheckCircle2 className="w-4 h-4" /> Identity-only mode active
               </span>
             )}
@@ -311,8 +311,8 @@ export default function SettingsPage() {
       </Card>
 
       {/* Danger Zone: Account Deletion */}
-      <Card className="border-red-500/20 bg-red-500/[0.02]">
-        <CardTitle className="text-lg text-red-600 dark:text-red-400">Danger Zone</CardTitle>
+      <Card className="border-zinc-600/20 bg-zinc-600/[0.02]">
+        <CardTitle className="text-lg text-zinc-900 dark:text-zinc-500">Danger Zone</CardTitle>
         <CardDescription className="mt-1 text-zinc-500">
           Permanently delete your PESU OAuth2 account, revoke all application grants, and wipe all stored credentials. Your account identifier will be permanently tombstoned and never reused.
         </CardDescription>

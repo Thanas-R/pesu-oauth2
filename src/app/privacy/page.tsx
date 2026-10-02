@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <div className="space-y-6 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <EyeOff className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            <EyeOff className="w-5 h-5 text-zinc-900 dark:text-zinc-100" />
             1. Zero-Exposure Credential Policy
           </div>
           <p>
@@ -26,7 +26,7 @@ export default function PrivacyPage() {
 
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <Lock className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+            <Lock className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
             2. Delegated Credential Vault
           </div>
           <p>
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
 
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <Server className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+            <Server className="w-5 h-5 text-zinc-900 dark:text-zinc-100" />
             3. Data Minimization & Scopes
           </div>
           <p>
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
 
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <ShieldCheck className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+            <ShieldCheck className="w-5 h-5 text-zinc-700 dark:text-zinc-300" />
             4. User Control & Consent Revocation
           </div>
           <p>

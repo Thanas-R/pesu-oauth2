@@ -156,7 +156,7 @@ export default function PortalPage() {
                   id="acceptedTerms"
                   checked={acceptedTerms}
                   onChange={(e) => setAcceptedTerms(e.target.checked)}
-                  className="mt-0.5 rounded border-zinc-300 dark:border-zinc-700 text-blue-600 focus:ring-blue-500 w-4 h-4 cursor-pointer shrink-0"
+                  className="mt-0.5 rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 focus:ring-zinc-600 w-4 h-4 cursor-pointer shrink-0"
                   required
                 />
                 <label
@@ -167,7 +167,7 @@ export default function PortalPage() {
                   <Link
                     href="/terms"
                     target="_blank"
-                    className="text-blue-600 dark:text-blue-400 font-medium underline hover:opacity-80"
+                    className="text-zinc-900 dark:text-zinc-500 font-medium underline hover:opacity-80"
                   >
                     Terms of Service
                   </Link>{' '}
@@ -175,7 +175,7 @@ export default function PortalPage() {
                   <Link
                     href="/privacy"
                     target="_blank"
-                    className="text-blue-600 dark:text-blue-400 font-medium underline hover:opacity-80"
+                    className="text-zinc-900 dark:text-zinc-500 font-medium underline hover:opacity-80"
                   >
                     Privacy Policy
                   </Link>
@@ -199,12 +199,12 @@ export default function PortalPage() {
 
       {/* Secret Generation Callout */}
       {createdSecret ? (
-        <Card className="bg-amber-500/10 border-amber-500/20 text-amber-900 dark:text-amber-200 p-6 space-y-4">
+        <Card className="bg-zinc-600/10 border-zinc-600/20 text-zinc-900 dark:text-zinc-300 p-6 space-y-4">
           <div className="flex items-start gap-3">
-            <ShieldAlert className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+            <ShieldAlert className="w-5 h-5 text-zinc-900 dark:text-zinc-500 shrink-0 mt-0.5" />
             <div className="space-y-1">
               <h4 className="font-semibold text-sm">Save your Client Secret immediately</h4>
-              <p className="text-xs text-amber-800/90 dark:text-amber-300/90 leading-relaxed">
+              <p className="text-xs text-zinc-800/90 dark:text-zinc-400/90 leading-relaxed">
                 This secret will never be shown again. Store it securely in your environment variables.
               </p>
             </div>
@@ -249,7 +249,7 @@ export default function PortalPage() {
               <Card className="hover:border-black/20 dark:hover:border-white/25 transition-all cursor-pointer h-full flex flex-col justify-between group">
                 <div>
                   <div className="flex items-start justify-between gap-2">
-                    <CardTitle className="group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <CardTitle className="group-hover:text-zinc-900 dark:group-hover:text-zinc-500 transition-colors">
                       {app.name}
                     </CardTitle>
                     <Badge variant={app.publishing_status}>

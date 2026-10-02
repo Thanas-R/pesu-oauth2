@@ -1,95 +1,72 @@
 import Link from 'next/link';
-import { Card, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ShieldCheck, Key, Lock, ArrowRight, Layers, FileCode } from 'lucide-react';
+import { AsciiLockup } from '@/components/ascii-art';
+import { DotGridSpotlight } from '@/components/dot-grid-spotlight';
+import { GlyphTide } from '@/components/ui/background-ascii-plasma';
+
+const features = [
+  { index: '01', title: 'Your password stays yours.', description: 'Third-party apps receive standard RS256 tokens. They never handle your PESU Academy password.' },
+  { index: '02', title: 'Encrypted by design.', description: 'Delegated integrations use an isolated AES-256-GCM vault with per-user data keys.' },
+  { index: '03', title: 'Built on open standards.', description: 'OIDC and OAuth 2.0 with required S256 PKCE for every authorization flow.' },
+];
 
 export default function HomePage() {
   return (
-    <div className="space-y-16 py-8">
-      {/* Hero section */}
-      <section className="text-center space-y-6 max-w-3xl mx-auto pt-6">
-        <Badge variant="production" className="px-3 py-1 text-xs">
-          OpenID Connect 1.0 Provider
-        </Badge>
-        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1]">
-          Sign in with PESU.
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">
-            Privacy-first identity.
-          </span>
+    <div>
+      <section className="home-hero" aria-label="PESU identity">
+        <h1 className="hero-lockup reveal reveal-1" aria-label="PESU OAuth2">
+          <AsciiLockup />
         </h1>
-        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-          The official-grade, unofficial OAuth 2.0 authorization server for student apps, clubs, and developers across PES University.
+        <p className="home-lede reveal reveal-2">
+          An unofficial OpenID Connect provider for PESU accounts. Register your application in the portal, configure a redirect URI, and connect with a standard OIDC library.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <Link href="/portal">
-            <Button size="lg" className="shadow-lg shadow-blue-500/20">
-              Developer Portal <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </Link>
-          <Link href="/docs">
-            <Button variant="secondary" size="lg">
-              Read the Docs
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Trust & Architecture Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="hover:border-black/15 dark:hover:border-white/20 transition-all">
-          <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4">
-            <ShieldCheck className="w-5 h-5" />
-          </div>
-          <CardTitle>Zero Password Exposure</CardTitle>
-          <CardDescription className="mt-2">
-            Third-party apps receive standard RS256 JWT tokens. They never see, touch, or handle your PESU Academy password.
-          </CardDescription>
-        </Card>
-
-        <Card className="hover:border-black/15 dark:hover:border-white/20 transition-all">
-          <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-4">
-            <Lock className="w-5 h-5" />
-          </div>
-          <CardTitle>AES-256-GCM Vault</CardTitle>
-          <CardDescription className="mt-2">
-            Delegated client integrations store credentials in an isolated vault using envelope encryption with per-user data keys.
-          </CardDescription>
-        </Card>
-
-        <Card className="hover:border-black/15 dark:hover:border-white/20 transition-all">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
-            <Key className="w-5 h-5" />
-          </div>
-          <CardTitle>Strict PKCE Required</CardTitle>
-          <CardDescription className="mt-2">
-            Every authorization flow mandates Proof Key for Code Exchange (S256), preventing authorization code interception attacks.
-          </CardDescription>
-        </Card>
-      </section>
-
-      {/* Developer Experience Showcase */}
-      <section className="rounded-3xl border border-black/[0.08] dark:border-white/[0.12] bg-white/50 dark:bg-zinc-900/50 backdrop-blur-xl p-8 sm:p-12 overflow-hidden relative">
-        <div className="max-w-2xl space-y-4">
-          <div className="flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-            <Layers className="w-4 h-4" /> Seamless Integration
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Standard OIDC. Works with NextAuth, Lucia, and Passport.
-          </h2>
-          <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            Configure your client ID and redirect URI in the portal. Point your library to our discovery document at <code className="bg-black/5 dark:bg-white/10 px-1.5 py-0.5 rounded text-xs font-mono">/.well-known/openid-configuration</code> and start signing in students in minutes.
-          </p>
-          <div className="pt-4 flex items-center gap-4">
-            <Link href="/docs">
-              <Button variant="outline" size="sm">
-                <FileCode className="w-4 h-4 mr-1.5" /> Integration Code Examples
-              </Button>
-            </Link>
+        <div className="home-hero-row reveal reveal-3">
+          <div className="home-links">
+            <Link href="/login"><Button size="lg">Sign in <span aria-hidden="true">↗</span></Button></Link>
+            <Link href="/portal"><Button variant="outline" size="lg">Developer portal <span aria-hidden="true">→</span></Button></Link>
           </div>
         </div>
       </section>
+
+      <div className="home-plasma reveal reveal-4" aria-hidden="true">
+        <GlyphTide cellSize={13} />
+      </div>
+
+      <section className="home-split" aria-label="How it works">
+        <div className="home-steps">
+          <span className="ascii-eyebrow">How it works</span>
+          <h2>Built on open standards.</h2>
+          {features.map((f) => (
+            <div className="home-step" key={f.index}>
+              <span className="index">{f.index}</span>
+              <div><h3>{f.title}</h3><p>{f.description}</p></div>
+            </div>
+          ))}
+        </div>
+        <div className="home-console">
+          <DotGridSpotlight />
+          <div className="home-console-box">
+            <div className="home-console-bar"><span>● DISCOVERY</span><span>GET</span></div>
+            <pre>
+<span className="dim">$ </span>curl /.well-known/openid-configuration{'\n'}
+<span className="dim">{'{'}</span>{'\n'}
+{'  '}&quot;response_types_supported&quot;: [&quot;code&quot;],{'\n'}
+{'  '}&quot;code_challenge_methods&quot;: [&quot;S256&quot;],{'\n'}
+{'  '}&quot;id_token_signing_alg&quot;: [&quot;RS256&quot;]{'\n'}
+<span className="dim">{'}'}</span>{'\n'}
+<span className="dim">$ </span><span className="cursor" />
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <nav className="home-more" aria-label="More information">
+        <span className="ascii-eyebrow">Keep exploring</span>
+        <div>
+          <Link href="/docs">Documentation <span aria-hidden="true">→</span></Link>
+          <Link href="/faq">FAQ <span aria-hidden="true">→</span></Link>
+        </div>
+      </nav>
     </div>
   );
 }

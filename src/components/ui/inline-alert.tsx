@@ -17,13 +17,13 @@ export interface InlineAlertProps {
 
 const variantStyles = {
   error:
-    'bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400',
+    'bg-zinc-600/10 border border-zinc-600/20 text-zinc-900 dark:text-zinc-500',
   warning:
-    'bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400',
+    'bg-zinc-600/10 border border-zinc-600/20 text-zinc-800 dark:text-zinc-500',
   info:
-    'bg-blue-500/10 border border-blue-500/20 text-blue-700 dark:text-blue-400',
+    'bg-zinc-600/10 border border-zinc-600/20 text-zinc-800 dark:text-zinc-500',
   success:
-    'bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400',
+    'bg-zinc-600/10 border border-zinc-600/20 text-zinc-800 dark:text-zinc-500',
 };
 
 export function InlineAlert({

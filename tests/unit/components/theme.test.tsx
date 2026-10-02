@@ -6,7 +6,7 @@ import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { ThemeProvider } from '@/components/ui/theme-provider';
 
 const mockSetTheme = vi.fn();
-let mockResolvedTheme = 'light';
+const mockResolvedTheme = 'light';
 
 vi.mock('next-themes', () => ({
   useTheme: () => ({
@@ -26,30 +26,20 @@ describe('Theme Components', () => {
     expect(screen.getByText('Child Content')).toBeDefined();
   });
 
-  it('renders ThemeToggle and switches from light to dark', () => {
-    mockResolvedTheme = 'light';
+  it('renders a theme group with auto, light and dark options', () => {
     render(<ThemeToggle />);
-
-    const button = screen.getByRole('button', { name: /toggle theme/i });
-    expect(button).toBeDefined();
-
-    fireEvent.click(button);
+    expect(screen.getByRole('radiogroup', { name: /toggle theme/i })).toBeDefined();
+    fireEvent.click(screen.getByRole('radio', { name: 'Dark' }));
     expect(mockSetTheme).toHaveBeenCalledWith('dark');
-  });
-
-  it('renders ThemeToggle and switches from dark to light', () => {
-    mockResolvedTheme = 'dark';
-    render(<ThemeToggle />);
-
-    const button = screen.getByRole('button', { name: /toggle theme/i });
-    fireEvent.click(button);
+    fireEvent.click(screen.getByRole('radio', { name: 'Light' }));
     expect(mockSetTheme).toHaveBeenCalledWith('light');
+    fireEvent.click(screen.getByRole('radio', { name: 'Auto' }));
+    expect(mockSetTheme).toHaveBeenCalledWith('system');
   });
 
   it('renders placeholder skeleton in SSR via renderToString', async () => {
     const { renderToString } = await import('react-dom/server');
     const html = renderToString(<ThemeToggle />);
-    expect(html).toContain('w-9 h-9 rounded-full');
     expect(html).not.toContain('<button');
   });
 });

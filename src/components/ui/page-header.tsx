@@ -22,16 +22,16 @@ export function PageHeader({ eyebrow, title, description, className }: PageHeade
   return (
     <div className={cn('space-y-2', className)}>
       {eyebrow && (
-        <div className="flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+        <div className="ascii-eyebrow flex items-center gap-2">
           {eyebrow.icon}
           {eyebrow.label}
         </div>
       )}
-      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+      <h1 className="text-3xl font-semibold text-foreground">
         {title}
       </h1>
       {description && (
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{description}</p>
+        <p className="text-sm text-ink-muted mt-1">{description}</p>
       )}
     </div>
   );

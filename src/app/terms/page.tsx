@@ -16,7 +16,7 @@ export default function TermsPage() {
       <div className="space-y-6 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0" />
+            <AlertTriangle className="w-5 h-5 text-zinc-700 dark:text-zinc-300 shrink-0" />
             1. Unofficial Community Project & Non-Affiliation
           </div>
           <p>
@@ -26,7 +26,7 @@ export default function TermsPage() {
 
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <ShieldAlert className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0" />
+            <ShieldAlert className="w-5 h-5 text-zinc-900 dark:text-zinc-100 shrink-0" />
             2. Developer Obligations & Acceptable Use
           </div>
           <p>
@@ -43,7 +43,7 @@ export default function TermsPage() {
 
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <Scale className="w-5 h-5 text-purple-600 dark:text-purple-400 shrink-0" />
+            <Scale className="w-5 h-5 text-zinc-700 dark:text-zinc-300 shrink-0" />
             3. Disclaimer of Warranties & Limitation of Liability
           </div>
           <p>
@@ -56,7 +56,7 @@ export default function TermsPage() {
 
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <Ban className="w-5 h-5 text-red-600 dark:text-red-400 shrink-0" />
+            <Ban className="w-5 h-5 text-zinc-700 dark:text-zinc-300 shrink-0" />
             4. Client Suspension & Service Revocation
           </div>
           <p>
@@ -66,7 +66,7 @@ export default function TermsPage() {
 
         <Card className="p-6 space-y-3">
           <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-base">
-            <Code className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <Code className="w-5 h-5 text-zinc-900 dark:text-zinc-100 shrink-0" />
             5. Intellectual Property & Trademarks
           </div>
           <p>

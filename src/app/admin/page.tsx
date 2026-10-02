@@ -183,7 +183,7 @@ export default function AdminPage() {
 
   if (error) {
     return (
-      <div className="max-w-md mx-auto my-16 p-6 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-600 text-sm text-center">
+      <div className="max-w-md mx-auto my-16 p-6 rounded-2xl bg-zinc-600/10 border border-zinc-600/20 text-zinc-900 text-sm text-center">
         <ShieldAlert className="w-8 h-8 mx-auto mb-2 opacity-80" />
         <h3 className="font-semibold text-base mb-1">Access Denied</h3>
         <p>{error}</p>
@@ -212,7 +212,7 @@ export default function AdminPage() {
           <Inbox className="w-4 h-4" />
           Production Queue
           {requests.length > 0 && (
-            <span className="ml-1 px-2 py-0.5 text-xs rounded-full bg-blue-500 text-white font-mono">
+            <span className="ml-1 px-2 py-0.5 text-xs rounded-full bg-zinc-600 text-white font-mono">
               {requests.length}
             </span>
           )}
@@ -276,7 +276,7 @@ export default function AdminPage() {
                               [r.request_id]: e.target.checked,
                             }))
                           }
-                          className="rounded border-zinc-300 dark:border-zinc-700 text-blue-600 focus:ring-blue-500"
+                          className="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 focus:ring-zinc-600"
                         />
                         <span>Allow Delegated</span>
                       </label>
@@ -386,7 +386,7 @@ export default function AdminPage() {
                   </div>
 
                   {c.publishing_status === 'suspended' && c.suspension_reason && (
-                    <div className="mt-3.5 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-700 dark:text-red-400">
+                    <div className="mt-3.5 p-3 rounded-xl bg-zinc-600/10 border border-zinc-600/20 text-xs text-zinc-800 dark:text-zinc-500">
                       <span className="font-semibold block mb-0.5">Suspension Reason:</span>
                       {c.suspension_reason}
                     </div>

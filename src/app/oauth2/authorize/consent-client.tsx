@@ -132,7 +132,7 @@ export function ConsentClient({
           <div className="space-y-2.5">
             {requestedScopes.includes('openid') || requestedScopes.includes('profile') ? (
               <ScopePermissionRow
-                icon={<UserCheck className="w-4 h-4 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />}
+                icon={<UserCheck className="w-4 h-4 text-zinc-900 dark:text-zinc-500 mt-0.5 shrink-0" />}
                 title="Access your Student Profile"
                 description="Name, PRN, SRN, program, branch, semester, section, and campus."
               />
@@ -140,7 +140,7 @@ export function ConsentClient({
 
             {requestedScopes.includes('email') ? (
               <ScopePermissionRow
-                icon={<Mail className="w-4 h-4 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0" />}
+                icon={<Mail className="w-4 h-4 text-zinc-900 dark:text-zinc-500 mt-0.5 shrink-0" />}
                 title="View your Email Address"
                 description="Your official university email registered on PESU Academy."
               />
@@ -148,7 +148,7 @@ export function ConsentClient({
 
             {requestedScopes.includes('phone') ? (
               <ScopePermissionRow
-                icon={<Phone className="w-4 h-4 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />}
+                icon={<Phone className="w-4 h-4 text-zinc-900 dark:text-zinc-500 mt-0.5 shrink-0" />}
                 title="View your Phone Number"
                 description="Your contact phone number registered on PESU Academy."
               />
@@ -156,7 +156,7 @@ export function ConsentClient({
 
             {requestedScopes.includes('offline_access') ? (
               <ScopePermissionRow
-                icon={<RefreshCw className="w-4 h-4 text-purple-600 dark:text-purple-400 mt-0.5 shrink-0" />}
+                icon={<RefreshCw className="w-4 h-4 text-zinc-900 dark:text-zinc-500 mt-0.5 shrink-0" />}
                 title="Maintain Offline Access"
                 description="Remain signed into this application without re-authenticating every hour."
               />
@@ -167,20 +167,20 @@ export function ConsentClient({
           <div
             className={`p-4 rounded-xl border text-xs leading-relaxed flex items-start gap-3 ${
               isDelegated
-                ? 'bg-purple-500/10 border-purple-500/20 text-purple-900 dark:text-purple-300'
-                : 'bg-blue-500/10 border-blue-500/20 text-blue-900 dark:text-blue-300'
+                ? 'bg-zinc-600/10 border-zinc-600/20 text-zinc-900 dark:text-zinc-400'
+                : 'bg-zinc-600/10 border-zinc-600/20 text-zinc-900 dark:text-zinc-400'
             }`}
           >
             {isDelegated ? (
               <>
-                <KeyRound className="w-4 h-4 shrink-0 text-purple-600 dark:text-purple-400 mt-0.5" />
+                <KeyRound className="w-4 h-4 shrink-0 text-zinc-900 dark:text-zinc-500 mt-0.5" />
                 <div>
                   <span className="font-semibold">Delegated Credential Vault:</span> We will securely encrypt and store your PESU Academy password and session in our vault because this client is authorized to execute operations on your behalf.
                 </div>
               </>
             ) : (
               <>
-                <ShieldAlert className="w-4 h-4 shrink-0 text-blue-600 dark:text-blue-400 mt-0.5" />
+                <ShieldAlert className="w-4 h-4 shrink-0 text-zinc-900 dark:text-zinc-500 mt-0.5" />
                 <div>
                   <span className="font-semibold">Identity Only:</span> We do not store your PESU password. This application cannot access or modify your PESU Academy account.
                 </div>

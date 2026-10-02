@@ -2,12 +2,12 @@
 
 import * as React from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { InlineAlert } from '@/components/ui/inline-alert';
 import { PageLoader } from '@/components/ui/page-loader';
-import { ShieldCheck, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
+import { GlyphTide } from '@/components/ui/background-ascii-plasma';
 
 function LoginForm() {
   const router = useRouter();
@@ -47,18 +47,16 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[70vh] px-4">
-      <Card className="w-full max-w-md p-8 shadow-xl">
-        <CardHeader
-          icon={<ShieldCheck className="w-5 h-5" />}
-          iconColor="blue"
-          className="mb-6"
-        >
-          <CardTitle className="text-xl">Sign in with PESU</CardTitle>
-          <CardDescription className="text-xs">
-            Use your official PESU Academy credentials
-          </CardDescription>
-        </CardHeader>
+    <div className="login-scene">
+      <div className="login-plasma" aria-hidden="true">
+        <GlyphTide cellSize={13} />
+      </div>
+      <div className="login-layout">
+        <div className="login-intro reveal">
+          <h1>Sign in with <em>PESU OAuth2</em></h1>
+        </div>
+        <div className="login-form-wrap reveal reveal-2">
+
 
         {error ? (
           <InlineAlert
@@ -69,7 +67,7 @@ function LoginForm() {
           />
         ) : null}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <Input
             label="PRN or SRN"
             placeholder="e.g. PES1UG20CS001"
@@ -97,14 +95,15 @@ function LoginForm() {
             size="lg"
             loading={loading}
           >
-            Authenticate
+            Sign in
           </Button>
         </form>
 
-        <p className="text-center text-xs text-zinc-400 dark:text-zinc-500 mt-6 leading-relaxed">
+        <p className="login-disclaimer">
           Your credentials are authenticated directly with PESU Academy. In identity mode, your password is never stored on our servers.
         </p>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

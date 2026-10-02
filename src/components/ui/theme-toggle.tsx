@@ -1,12 +1,18 @@
 'use client';
 
 import * as React from 'react';
+import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useTheme } from 'next-themes';
-import { Sun, Moon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
+const options = [
+  { value: 'system', label: 'Auto', Icon: MonitorIcon },
+  { value: 'light', label: 'Light', Icon: SunIcon },
+  { value: 'dark', label: 'Dark', Icon: MoonIcon },
+] as const;
 
 export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const mounted = React.useSyncExternalStore(
     () => () => {},
     () => true,
@@ -14,26 +20,33 @@ export function ThemeToggle() {
   );
 
   if (!mounted) {
-    return (
-      <div className="w-9 h-9 rounded-full bg-black/5 dark:bg-white/10" />
-    );
+    return <div className="theme-switch-placeholder" aria-hidden="true" />;
   }
 
-  const isDark = resolvedTheme === 'dark';
+  const current = theme ?? 'system';
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="relative h-9 w-9 rounded-full bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15 border border-black/5 dark:border-white/10 p-0 active:scale-95"
-      aria-label="Toggle theme"
-    >
-      {isDark ? (
-        <Sun className="w-4 h-4 text-amber-400 transition-colors" />
-      ) : (
-        <Moon className="w-4 h-4 text-zinc-700 transition-colors" />
-      )}
-    </Button>
+    <div className="theme-switch" role="radiogroup" aria-label="Toggle theme">
+      {options.map((o) => (
+        <button
+          key={o.value}
+          type="button"
+          role="radio"
+          aria-label={o.label}
+          aria-checked={current === o.value}
+          title={`${o.label} theme`}
+          onClick={() => setTheme(o.value)}
+        >
+          {current === o.value && (
+            <motion.span
+              layoutId="theme-option"
+              className="theme-switch-indicator"
+              transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+            />
+          )}
+          <o.Icon aria-hidden="true" size={16} />
+        </button>
+      ))}
+    </div>
   );
 }

@@ -34,23 +34,23 @@ vi.mock('next/navigation', () => ({
 }));
 
 describe('Public Static Pages', () => {
-  it('renders RootLayout with header, navigation, and footer', () => {
+  it('renders RootLayout with header and navigation but no footer', () => {
     render(
       <RootLayout>
         <div data-testid="page-child">Test Content</div>
       </RootLayout>
     );
     expect(screen.getByTestId('page-child')).toBeDefined();
-    expect(screen.getByText('PESU OAuth2')).toBeDefined();
-    expect(screen.getByText('Terms of Service')).toBeDefined();
-    expect(screen.getByText(/PESU Developer Community/i)).toBeDefined();
+    expect(screen.getByText('PESU')).toBeDefined();
+    expect(screen.queryByRole('contentinfo')).toBeNull();
   });
   it('renders HomePage with hero and features', () => {
     render(<HomePage />);
-    expect(screen.getByText(/Sign in with PESU/i)).toBeDefined();
-    expect(screen.getByText(/OpenID Connect 1.0 Provider/i)).toBeDefined();
-    expect(screen.getByText(/Zero Password Exposure/i)).toBeDefined();
-    expect(screen.getByText(/AES-256-GCM Vault/i)).toBeDefined();
+    expect(screen.getByRole('heading', { name: 'PESU OAuth2' })).toBeDefined();
+    expect(screen.getByRole('link', { name: /Documentation/i })).toBeDefined();
+    expect(screen.getByRole('link', { name: /FAQ/i })).toBeDefined();
+    expect(screen.getByText(/Your password stays yours/i)).toBeDefined();
+    expect(screen.getByText(/Encrypted by design/i)).toBeDefined();
   });
 
   it('renders FaqPage with questions', () => {

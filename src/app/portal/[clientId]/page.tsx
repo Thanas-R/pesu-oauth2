@@ -277,7 +277,7 @@ export default function ClientDetailPage() {
                 className="h-6 w-6 p-0 hover:text-zinc-900 dark:hover:text-zinc-100"
                 title="Copy Client ID"
               >
-                {copiedId ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedId ? <Check className="w-3.5 h-3.5 text-zinc-600" /> : <Copy className="w-3.5 h-3.5" />}
               </Button>
             </div>
           </div>
@@ -313,7 +313,7 @@ export default function ClientDetailPage() {
                       id="delegatedRequested"
                       checked={delegatedRequested}
                       onChange={(e) => setDelegatedRequested(e.target.checked)}
-                      className="mt-0.5 rounded border-zinc-300 dark:border-zinc-700 text-blue-600 focus:ring-blue-500 w-4 h-4"
+                      className="mt-0.5 rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 focus:ring-zinc-600 w-4 h-4"
                     />
                     <label
                       htmlFor="delegatedRequested"
@@ -340,18 +340,18 @@ export default function ClientDetailPage() {
 
       {/* Application Suspended Banner */}
       {client.publishing_status === 'suspended' && (
-        <Card className="p-4 bg-red-500/10 border border-red-500/30 dark:border-red-500/20 space-y-2 text-red-700 dark:text-red-400">
+        <Card className="p-4 bg-zinc-600/10 border border-zinc-600/30 dark:border-zinc-600/20 space-y-2 text-zinc-800 dark:text-zinc-500">
           <div className="flex items-center gap-2 font-semibold text-sm">
-            <AlertTriangle className="w-4 h-4 text-red-600 dark:text-red-400" />
+            <AlertTriangle className="w-4 h-4 text-zinc-900 dark:text-zinc-500" />
             <span>Application Suspended by Administrator</span>
           </div>
-          <p className="text-xs leading-relaxed text-red-900/80 dark:text-red-300/80">
+          <p className="text-xs leading-relaxed text-zinc-900/80 dark:text-zinc-400/80">
             This application has been suspended. Authorization and token exchange requests for this client are currently blocked.
           </p>
           {client.suspension_reason && (
-            <div className="mt-2 pt-2 border-t border-red-500/20 text-xs">
-              <span className="font-semibold block mb-0.5 text-red-900 dark:text-red-200">Reason:</span>
-              <p className="text-red-800 dark:text-red-300">{client.suspension_reason}</p>
+            <div className="mt-2 pt-2 border-t border-zinc-600/20 text-xs">
+              <span className="font-semibold block mb-0.5 text-zinc-900 dark:text-zinc-300">Reason:</span>
+              <p className="text-zinc-800 dark:text-zinc-400">{client.suspension_reason}</p>
             </div>
           )}
         </Card>
@@ -359,10 +359,10 @@ export default function ClientDetailPage() {
 
       {/* Rotated Secret Banner */}
       {rotatedSecret && (
-        <Card className="p-4 bg-emerald-500/10 border border-emerald-500/30 dark:border-emerald-500/20 space-y-3">
+        <Card className="p-4 bg-zinc-600/10 border border-zinc-600/30 dark:border-zinc-600/20 space-y-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-semibold text-sm">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <div className="flex items-center gap-2 text-zinc-800 dark:text-zinc-400 font-semibold text-sm">
+              <CheckCircle2 className="w-4 h-4 text-zinc-900 dark:text-zinc-500" />
               <span>New Client Secret Generated</span>
             </div>
             <Button
@@ -374,10 +374,10 @@ export default function ClientDetailPage() {
               Dismiss
             </Button>
           </div>
-          <p className="text-xs text-emerald-900/80 dark:text-emerald-200/80">
+          <p className="text-xs text-zinc-900/80 dark:text-zinc-300/80">
             Please copy your new secret now. For security reasons, it will not be displayed again.
           </p>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2.5 rounded-xl bg-white dark:bg-black/40 border border-emerald-500/20 font-mono text-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-2.5 rounded-xl bg-white dark:bg-black/40 border border-zinc-600/20 font-mono text-xs">
             <span className="select-all break-all text-zinc-900 dark:text-zinc-100 font-semibold">{rotatedSecret}</span>
             <Button
               type="button"
@@ -392,7 +392,7 @@ export default function ClientDetailPage() {
             >
               {copiedRotatedSecret ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-500" /> Copied!
+                  <Check className="w-3.5 h-3.5 text-zinc-600" /> Copied!
                 </>
               ) : (
                 <>
@@ -407,7 +407,7 @@ export default function ClientDetailPage() {
       {/* Client Credentials Card */}
       <Card>
         <CardTitle className="text-lg flex items-center gap-2">
-          <KeyRound className="w-4 h-4 text-blue-500" />
+          <KeyRound className="w-4 h-4 text-zinc-600" />
           <span>Client Credentials</span>
         </CardTitle>
         <CardDescription className="mt-1">
@@ -430,7 +430,7 @@ export default function ClientDetailPage() {
                 onClick={copyClientId}
                 className="shrink-0"
               >
-                {copiedId ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedId ? <Check className="w-3.5 h-3.5 text-zinc-600" /> : <Copy className="w-3.5 h-3.5" />}
                 <span className="ml-1 text-xs">{copiedId ? 'Copied' : 'Copy'}</span>
               </Button>
             </div>
@@ -451,7 +451,7 @@ export default function ClientDetailPage() {
                 onClick={() => setIsRotateSecretOpen(true)}
                 className="shrink-0 text-xs flex items-center gap-1.5 text-zinc-700 dark:text-zinc-300"
               >
-                <RefreshCw className="w-3.5 h-3.5 text-amber-500" />
+                <RefreshCw className="w-3.5 h-3.5 text-zinc-600" />
                 <span>Rotate Secret</span>
               </Button>
             </div>
@@ -463,7 +463,7 @@ export default function ClientDetailPage() {
       <Drawer open={isRotateSecretOpen} onOpenChange={setIsRotateSecretOpen}>
         <DrawerContent className="max-w-xl mx-auto">
           <DrawerHeader>
-            <DrawerTitle className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+            <DrawerTitle className="flex items-center gap-2 text-zinc-900 dark:text-zinc-500">
               <AlertTriangle className="w-5 h-5" />
               <span>Rotate Client Secret</span>
             </DrawerTitle>
@@ -536,7 +536,7 @@ export default function ClientDetailPage() {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleRemoveUri(index)}
-                      className="text-red-500 hover:text-red-600 hover:bg-red-500/10 p-2 shrink-0 h-9 w-9"
+                      className="text-zinc-600 hover:text-zinc-900 hover:bg-zinc-600/10 p-2 shrink-0 h-9 w-9"
                       title="Remove URL"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -576,7 +576,7 @@ export default function ClientDetailPage() {
                 Save Changes
               </Button>
               {uriSuccess ? (
-                <span className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 font-medium">
+                <span className="text-xs text-zinc-900 dark:text-zinc-500 flex items-center gap-1 font-medium">
                   <Check className="w-3.5 h-3.5" /> Saved!
                 </span>
               ) : null}
@@ -619,7 +619,7 @@ export default function ClientDetailPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => handleRemoveTester(t.sub)}
-                    className="h-7 w-7 p-0 text-red-500 hover:text-red-600 hover:bg-red-500/10"
+                    className="h-7 w-7 p-0 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-600/10"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </Button>

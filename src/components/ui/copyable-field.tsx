@@ -44,7 +44,7 @@ export function CopyableField({ value, label, masked = false, className }: Copya
           title={`Copy ${label ?? 'value'}`}
         >
           {copied
-            ? <Check className="w-3.5 h-3.5 text-emerald-500" />
+            ? <Check className="w-3.5 h-3.5 text-zinc-600" />
             : <Copy className="w-3.5 h-3.5" />
           }
         </Button>

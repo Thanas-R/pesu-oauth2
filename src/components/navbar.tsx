@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Shield, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function Navbar() {
@@ -51,53 +51,44 @@ export function Navbar() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden sm:flex items-center gap-4 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+      <nav className="hidden sm:flex items-center gap-4 text-xs font-medium">
         <Link
           href="/portal"
-          className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          className="site-nav-link"
         >
           Portal
         </Link>
         <Link
           href="/settings"
-          className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          className="site-nav-link"
         >
           Settings
         </Link>
         <Link
           href="/docs"
-          className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          className="site-nav-link"
         >
           Documentation
         </Link>
         <Link
           href="/faq"
-          className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          className="site-nav-link"
         >
           FAQ
         </Link>
         {isAdmin && (
-          <Link
-            href="/admin"
-            className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 font-semibold transition-colors flex items-center gap-1"
-          >
-            <Shield className="w-3.5 h-3.5" />
-            <span>Admin</span>
+          <Link href="/admin" className="site-nav-link">
+            Admin
           </Link>
         )}
         {isAuthenticated ? (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleLogout}
-            className="h-auto p-0 font-normal text-sm hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-transparent"
-          >
+          <button type="button" onClick={handleLogout} className="site-signout">
             Sign Out
-          </Button>
+          </button>
         ) : (
           <Link
             href="/login"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            className="site-nav-link"
           >
             Sign In
           </Link>
@@ -119,32 +110,32 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-14 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border-b border-black/[0.08] dark:border-white/[0.08] p-4 flex flex-col gap-3 text-sm font-medium sm:hidden z-50 shadow-xl animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="fixed inset-x-0 top-16 bg-background border-b border-line p-4 flex flex-col gap-3 text-sm font-medium sm:hidden z-50">
           <Link
             href="/portal"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white py-1"
+            className="site-nav-link py-1"
           >
             Portal
           </Link>
           <Link
             href="/settings"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white py-1"
+            className="site-nav-link py-1"
           >
             Settings
           </Link>
           <Link
             href="/docs"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white py-1"
+            className="site-nav-link py-1"
           >
             Documentation
           </Link>
           <Link
             href="/faq"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white py-1"
+            className="site-nav-link py-1"
           >
             FAQ
           </Link>
@@ -152,29 +143,27 @@ export function Navbar() {
             <Link
               href="/admin"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 font-semibold py-1 flex items-center gap-1.5"
+              className="site-nav-link py-1"
             >
-              <Shield className="w-4 h-4" />
-              <span>Admin Dashboard</span>
+              Admin Dashboard
             </Link>
           )}
           {isAuthenticated ? (
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
+            type="button"
             onClick={() => {
               setMobileMenuOpen(false);
               handleLogout();
             }}
-            className="h-auto p-0 py-1 font-normal text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-transparent justify-start"
+            className="site-signout self-start"
           >
             Sign Out
-          </Button>
+          </button>
           ) : (
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white py-1"
+              className="site-nav-link py-1"
             >
               Sign In
             </Link>

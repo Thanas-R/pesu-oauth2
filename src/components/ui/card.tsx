@@ -16,8 +16,7 @@ export function Card({
   return (
     <div
       className={cn(
-        'relative rounded-2xl bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.12] shadow-sm p-6 overflow-hidden transition-colors',
-        'before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-white/20 before:to-transparent',
+        'ascii-card relative p-6 overflow-hidden transition-colors',
         className
       )}
       {...props}
@@ -36,14 +35,15 @@ export function CardHeader({
   className,
   children,
   icon,
-  iconColor = 'blue',
+  iconColor,
   ...props
 }: CardHeaderProps) {
   if (icon) {
     return (
       <div className={cn('flex items-center gap-2.5 mb-4', className)} {...props}>
         <div
-          className={`w-9 h-9 rounded-xl flex items-center justify-center bg-${iconColor}-600/10 text-${iconColor}-600 dark:text-${iconColor}-400 shrink-0`}
+          className="w-9 h-9 border border-line flex items-center justify-center text-foreground shrink-0"
+          data-icon-color={iconColor}
         >
           {icon}
         </div>
@@ -66,7 +66,7 @@ export function CardTitle({
   return (
     <h3
       className={cn(
-        'text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50',
+        'text-xl font-semibold text-foreground',
         className
       )}
       {...props}
@@ -83,7 +83,7 @@ export function CardDescription({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn('text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed', className)}
+      className={cn('text-sm text-ink-muted leading-relaxed', className)}
       {...props}
     >
       {children}

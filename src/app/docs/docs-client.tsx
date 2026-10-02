@@ -17,7 +17,6 @@ import { CodeBlock } from '@/components/ui/code-block';
 import {
   Check,
   Copy,
-  Sparkles,
   Search,
   Code2,
   Key,
@@ -32,6 +31,7 @@ import {
   Server,
   Database,
 } from 'lucide-react';
+import { RiRobot2Line } from 'react-icons/ri';
 
 interface GuideDoc {
   id: string;
@@ -74,10 +74,10 @@ const GUIDES: GuideDoc[] = [
 ];
 
 function getMethodBadgeClass(method: string, isActive: boolean): string {
-  if (isActive) return 'bg-white/20 text-white';
-  if (method.includes('GET / POST')) return 'bg-sky-500/10 text-sky-600 dark:text-sky-400';
-  if (method.includes('POST')) return 'bg-blue-500/10 text-blue-600 dark:text-blue-400';
-  return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400';
+  if (isActive) return 'bg-white/20 text-white dark:bg-zinc-900/15 dark:text-zinc-900';
+  if (method.includes('GET / POST')) return 'bg-zinc-900/10 text-zinc-800 dark:bg-white/10 dark:text-zinc-200';
+  if (method.includes('POST')) return 'bg-zinc-900/10 text-zinc-800 dark:bg-white/10 dark:text-zinc-200';
+  return 'bg-zinc-900/10 text-zinc-800 dark:bg-white/10 dark:text-zinc-200';
 }
 
 
@@ -224,7 +224,7 @@ export function DocsClient({
         <aside
           className={`${
             mobileMenuOpen ? 'block' : 'hidden'
-          } lg:block w-full lg:w-72 shrink-0 lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] overflow-y-auto space-y-6 pr-1`}
+          } lg:block w-full lg:w-72 shrink-0 lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] overflow-y-auto space-y-6 docs-sidebar`}
         >
           {/* Search Box */}
           <div className="relative">
@@ -234,7 +234,7 @@ export function DocsClient({
               placeholder="Search guides & endpoints..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 pr-3 py-1.5 text-xs bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-blue-500/50 text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400"
+              className="w-full pl-8 pr-3 py-1.5 text-xs bg-white dark:bg-zinc-900 border border-black/10 dark:border-white/10 rounded-xl docs-search text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400"
             />
           </div>
 
@@ -245,18 +245,18 @@ export function DocsClient({
             onClick={() =>
               copyToClipboard(generateFullApiReferenceMarkdown(endpoints, issuerUrl), 'full-spec-sidebar')
             }
-            className="w-full justify-between border-blue-500/20 bg-blue-500/5 hover:bg-blue-500/10 text-blue-700 dark:text-blue-300 hover:text-blue-700 dark:hover:text-blue-300"
+            className="w-full justify-between border-zinc-900/10 bg-zinc-500/5 hover:bg-zinc-500/10 text-zinc-900 dark:text-zinc-100"
           >
             <div className="flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+              <RiRobot2Line className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300" />
               <span className="font-semibold">
                 {copiedId === 'full-spec-sidebar' ? 'Copied Full Spec!' : 'Copy for LLM (Full)'}
               </span>
             </div>
             {copiedId === 'full-spec-sidebar' ? (
-              <Check className="w-3.5 h-3.5 text-emerald-500" />
+              <Check className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300" />
             ) : (
-              <Copy className="w-3 h-3 text-blue-500 opacity-60 group-hover:opacity-100" />
+              <Copy className="w-3 h-3 text-zinc-700 dark:text-zinc-300 opacity-60 group-hover:opacity-100" />
             )}
           </Button>
 
@@ -276,12 +276,12 @@ export function DocsClient({
                     onClick={() => selectItem(guide.id)}
                     className={`w-full h-auto justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium ${
                       isActive
-                        ? 'bg-blue-600 text-white hover:bg-blue-600 shadow-xs font-semibold'
+                        ? 'bg-zinc-900 text-zinc-50 hover:bg-zinc-900 dark:bg-white dark:text-zinc-900! dark:hover:bg-white dark:hover:text-zinc-900! shadow-xs font-semibold'
                         : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-black/5 dark:hover:bg-white/5'
                     }`}
                   >
                     <span>{guide.title}</span>
-                    {isActive && <ChevronRight className="w-3 h-3 text-white/80" />}
+                    {isActive && <ChevronRight className="w-3 h-3 opacity-70" />}
                   </Button>
                 );
               })}
@@ -308,7 +308,7 @@ export function DocsClient({
                         onClick={() => selectItem(ep.id)}
                         className={`w-full h-auto justify-start gap-2 px-2 py-1.5 rounded-lg text-xs font-mono ${
                           isActive
-                            ? 'bg-blue-600 text-white hover:bg-blue-600 shadow-xs font-semibold'
+                            ? 'bg-zinc-900 text-zinc-50 hover:bg-zinc-900 dark:bg-white dark:text-zinc-900! dark:hover:bg-white dark:hover:text-zinc-900! shadow-xs font-semibold'
                             : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-black/5 dark:hover:bg-white/5'
                         }`}
                       >
@@ -346,7 +346,7 @@ export function DocsClient({
                         onClick={() => selectItem(ep.id)}
                         className={`w-full h-auto justify-start gap-2 px-2 py-1.5 rounded-lg text-xs font-mono ${
                           isActive
-                            ? 'bg-blue-600 text-white hover:bg-blue-600 shadow-xs font-semibold'
+                            ? 'bg-zinc-900 text-zinc-50 hover:bg-zinc-900 dark:bg-white dark:text-zinc-900! dark:hover:bg-white dark:hover:text-zinc-900! shadow-xs font-semibold'
                             : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-black/5 dark:hover:bg-white/5'
                         }`}
                       >
@@ -376,7 +376,7 @@ export function DocsClient({
                   value={selectedApiVersion}
                   onChange={(e) => setSelectedApiVersion(e.target.value)}
                   aria-label="Select API version"
-                  className="text-[10px] font-mono font-semibold py-0.5 px-1.5 rounded-md bg-black/5 dark:bg-white/10 text-zinc-700 dark:text-zinc-300 border border-black/10 dark:border-white/10 focus:outline-hidden focus:ring-1 focus:ring-blue-500 cursor-pointer"
+                  className="text-[10px] font-mono font-semibold py-0.5 px-1.5 rounded-md bg-black/5 dark:bg-white/10 text-zinc-700 dark:text-zinc-300 border border-black/10 dark:border-white/10 focus:outline-hidden focus:ring-1 focus:ring-zinc-900 cursor-pointer"
                 >
                   {AVAILABLE_API_VERSIONS.map((v) => (
                     <option key={v} value={v}>
@@ -400,7 +400,7 @@ export function DocsClient({
                         onClick={() => selectItem(ep.id)}
                         className={`w-full h-auto justify-start gap-2 px-2 py-1.5 rounded-lg text-xs font-mono ${
                           isActive
-                            ? 'bg-blue-600 text-white hover:bg-blue-600 shadow-xs font-semibold'
+                            ? 'bg-zinc-900 text-zinc-50 hover:bg-zinc-900 dark:bg-white dark:text-zinc-900! dark:hover:bg-white dark:hover:text-zinc-900! shadow-xs font-semibold'
                             : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-black/5 dark:hover:bg-white/5'
                         }`}
                       >
@@ -423,7 +423,7 @@ export function DocsClient({
           {/* Useful Developer Info Box */}
           <div className="p-3.5 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 space-y-2.5 text-xs text-zinc-500 dark:text-zinc-400">
             <div className="font-semibold text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
-              <Server className="w-3.5 h-3.5 text-blue-500" />
+              <Server className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300" />
               <span>OIDC Server Info</span>
             </div>
             <div className="space-y-1 font-mono text-[11px]">
@@ -440,7 +440,7 @@ export function DocsClient({
             <div className="pt-2 border-t border-black/5 dark:border-white/5 flex flex-col gap-1 text-[11px]">
               <Link
                 href="/portal"
-                className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 font-medium"
+                className="text-zinc-900 dark:text-zinc-100 hover:underline flex items-center gap-1 font-medium"
               >
                 <span>Manage Apps in Portal</span>
                 <ExternalLink className="w-3 h-3" />
@@ -480,19 +480,19 @@ export function DocsClient({
               {/* Architecture Diagram / Overview Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Card className="p-4 space-y-2 bg-white/70 dark:bg-zinc-900/70 border border-black/5 dark:border-white/10">
-                  <div className="font-semibold text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  <div className="font-semibold text-xs text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
                     1. Register Client
                   </div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400">
                     Create an application in the{' '}
-                    <Link href="/portal" className="underline font-medium text-blue-500">
+                    <Link href="/portal" className="underline font-medium text-zinc-700 dark:text-zinc-300">
                       Developer Portal
                     </Link>{' '}
                     to receive your unique <code className="font-mono">client_id</code> and register callback URIs.
                   </p>
                 </Card>
                 <Card className="p-4 space-y-2 bg-white/70 dark:bg-zinc-900/70 border border-black/5 dark:border-white/10">
-                  <div className="font-semibold text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  <div className="font-semibold text-xs text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
                     2. Initiate PKCE Flow
                   </div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400">
@@ -501,7 +501,7 @@ export function DocsClient({
                   </p>
                 </Card>
                 <Card className="p-4 space-y-2 bg-white/70 dark:bg-zinc-900/70 border border-black/5 dark:border-white/10">
-                  <div className="font-semibold text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  <div className="font-semibold text-xs text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
                     3. Mint & Verify Tokens
                   </div>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400">
@@ -514,7 +514,7 @@ export function DocsClient({
               {/* Issuer URL & Discovery */}
               <div className="space-y-3">
                 <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-                  <Server className="w-4 h-4 text-blue-500" />
+                  <Server className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
                   <span>Issuer URL & Discovery</span>
                 </h3>
                 <Card className="p-4 space-y-3 bg-white dark:bg-zinc-950 border border-black/10 dark:border-white/10">
@@ -531,8 +531,8 @@ export function DocsClient({
                     >
                       {copiedId === 'issuer-url' ? (
                         <>
-                          <Check className="w-3 h-3 text-emerald-500" />
-                          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied</span>
+                          <Check className="w-3 h-3 text-zinc-700 dark:text-zinc-300" />
+                          <span className="text-zinc-900 dark:text-zinc-100 font-semibold">Copied</span>
                         </>
                       ) : (
                         <>
@@ -548,7 +548,7 @@ export function DocsClient({
                       href={`${issuerUrl}/.well-known/openid-configuration`}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline font-mono inline-flex items-center gap-1"
+                      className="text-zinc-900 dark:text-zinc-100 hover:underline font-mono inline-flex items-center gap-1"
                     >
                       <span>{issuerUrl}/.well-known/openid-configuration</span>
                       <ExternalLink className="w-3 h-3" />
@@ -558,8 +558,8 @@ export function DocsClient({
               </div>
 
               {/* Publishing States Notice */}
-              <Card className="p-4 space-y-2 bg-amber-500/5 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
-                <div className="font-semibold text-amber-800 dark:text-amber-100">
+              <Card className="p-4 space-y-2 bg-zinc-500/5 border border-zinc-900/10 dark:border-white/10 text-xs text-zinc-800 dark:text-zinc-200">
+                <div className="font-semibold text-zinc-900 dark:text-zinc-100">
                   Client Publishing Lifecycle
                 </div>
                 <p>
@@ -593,7 +593,7 @@ export function DocsClient({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Card className="p-5 space-y-3 bg-white/70 dark:bg-zinc-900/70 border border-black/10 dark:border-white/10">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                    <span className="font-semibold text-xs text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
                       Explicit Version Route
                     </span>
                     <Badge variant="production" className="text-[10px]">
@@ -610,7 +610,7 @@ export function DocsClient({
 
                 <Card className="p-5 space-y-3 bg-white/70 dark:bg-zinc-900/70 border border-black/10 dark:border-white/10">
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-xs text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                    <span className="font-semibold text-xs text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Unversioned Route Alias
                     </span>
                     <Badge variant="optional" className="text-[10px]">
@@ -637,7 +637,7 @@ export function DocsClient({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   <div className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 space-y-1.5">
                     <div className="font-semibold text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
-                      <Key className="w-3.5 h-3.5 text-blue-500" />
+                      <Key className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300" />
                       <span>Protocol Endpoints (RFC-Governed)</span>
                     </div>
                     <p className="text-[11px] text-zinc-500 leading-relaxed">
@@ -654,7 +654,7 @@ export function DocsClient({
 
                   <div className="p-3 rounded-xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 space-y-1.5">
                     <div className="font-semibold text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
-                      <Database className="w-3.5 h-3.5 text-emerald-500" />
+                      <Database className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300" />
                       <span>Resource Server Endpoints (Versioned)</span>
                     </div>
                     <p className="text-[11px] text-zinc-500 leading-relaxed">
@@ -685,7 +685,7 @@ export function DocsClient({
                     </thead>
                     <tbody className="divide-y divide-black/5 dark:divide-white/5">
                       <tr>
-                        <td className="py-2.5 px-3 font-mono font-semibold text-blue-600 dark:text-blue-400">
+                        <td className="py-2.5 px-3 font-mono font-semibold text-zinc-900 dark:text-zinc-100">
                           v1
                         </td>
                         <td className="py-2.5 px-3">
@@ -708,7 +708,7 @@ export function DocsClient({
               {/* Backward Compatibility & Evolution Policy */}
               <div className="p-4 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
                 <div className="font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5 text-sm">
-                  <Sparkles className="w-4 h-4 text-blue-500" />
+                  <RiRobot2Line className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
                   <span>Breaking Changes & Evolution Policy</span>
                 </div>
                 <ul className="list-disc list-inside space-y-1.5 leading-relaxed">
@@ -816,7 +816,7 @@ async function generatePkcePair() {
                   </thead>
                   <tbody className="divide-y divide-black/5 dark:divide-white/5">
                     <tr>
-                      <td className="py-2.5 px-3 font-mono font-semibold text-blue-600 dark:text-blue-400">
+                      <td className="py-2.5 px-3 font-mono font-semibold text-zinc-900 dark:text-zinc-100">
                         openid
                       </td>
                       <td className="py-2.5 px-3 font-mono text-zinc-600 dark:text-zinc-300">sub</td>
@@ -825,7 +825,7 @@ async function generatePkcePair() {
                       </td>
                     </tr>
                     <tr>
-                      <td className="py-2.5 px-3 font-mono font-semibold text-blue-600 dark:text-blue-400">
+                      <td className="py-2.5 px-3 font-mono font-semibold text-zinc-900 dark:text-zinc-100">
                         profile
                       </td>
                       <td className="py-2.5 px-3 font-mono text-zinc-600 dark:text-zinc-300">
@@ -836,7 +836,7 @@ async function generatePkcePair() {
                       </td>
                     </tr>
                     <tr>
-                      <td className="py-2.5 px-3 font-mono font-semibold text-blue-600 dark:text-blue-400">
+                      <td className="py-2.5 px-3 font-mono font-semibold text-zinc-900 dark:text-zinc-100">
                         email
                       </td>
                       <td className="py-2.5 px-3 font-mono text-zinc-600 dark:text-zinc-300">email</td>
@@ -845,7 +845,7 @@ async function generatePkcePair() {
                       </td>
                     </tr>
                     <tr>
-                      <td className="py-2.5 px-3 font-mono font-semibold text-blue-600 dark:text-blue-400">
+                      <td className="py-2.5 px-3 font-mono font-semibold text-zinc-900 dark:text-zinc-100">
                         phone
                       </td>
                       <td className="py-2.5 px-3 font-mono text-zinc-600 dark:text-zinc-300">
@@ -856,7 +856,7 @@ async function generatePkcePair() {
                       </td>
                     </tr>
                     <tr>
-                      <td className="py-2.5 px-3 font-mono font-semibold text-blue-600 dark:text-blue-400">
+                      <td className="py-2.5 px-3 font-mono font-semibold text-zinc-900 dark:text-zinc-100">
                         offline_access
                       </td>
                       <td className="py-2.5 px-3 font-mono text-zinc-600 dark:text-zinc-300">
@@ -887,7 +887,7 @@ async function generatePkcePair() {
               <Card className="p-6 bg-black/[0.02] dark:bg-zinc-950/60 border-black/10 dark:border-white/10 space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Code2 className="w-4 h-4 text-blue-500" />
+                    <Code2 className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
                     <span className="font-semibold text-sm text-zinc-900 dark:text-zinc-100">
                       auth.ts (Root Config)
                     </span>
@@ -923,7 +923,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                     className="h-7 text-xs gap-1"
                   >
                     {copiedId === 'nextauth-code' ? (
-                      <Check className="w-3 h-3 text-emerald-500" />
+                      <Check className="w-3 h-3 text-zinc-700 dark:text-zinc-300" />
                     ) : (
                       <Copy className="w-3 h-3" />
                     )}
@@ -989,7 +989,7 @@ export const { GET, POST } = handlers;`}
                       className="h-7 w-7 p-0 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
                     >
                       {copiedId === `path-${currentEndpoint.id}` ? (
-                        <Check className="w-3.5 h-3.5 text-emerald-500" />
+                        <Check className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300" />
                       ) : (
                         <Copy className="w-3.5 h-3.5" />
                       )}
@@ -1010,8 +1010,8 @@ export const { GET, POST } = handlers;`}
                   >
                     {copiedId === `llm-${currentEndpoint.id}` ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-emerald-500" />
-                        <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                        <Check className="w-3.5 h-3.5 text-zinc-700 dark:text-zinc-300" />
+                        <span className="text-zinc-900 dark:text-zinc-100 font-semibold">
                           Copied Markdown!
                         </span>
                       </>
@@ -1201,10 +1201,10 @@ export const { GET, POST } = handlers;`}
                           <span
                             className={`w-2 h-2 rounded-full ${
                               isSuccess
-                                ? 'bg-emerald-500'
-                                : isRedirect
-                                ? 'bg-sky-500'
-                                : 'bg-amber-500'
+                              ? 'bg-zinc-900 dark:bg-zinc-100'
+                              : isRedirect
+                              ? 'bg-zinc-600 dark:bg-zinc-400'
+                              : 'bg-zinc-400 dark:bg-zinc-600'
                             }`}
                           />
                           <span>
@@ -1321,7 +1321,7 @@ export const { GET, POST } = handlers;`}
                 variant="ghost"
                 size="sm"
                 onClick={() => selectItem(prevItem.id)}
-                className="group h-auto text-left flex-col items-start space-y-0.5 p-2"
+                className="docs-pagination group h-auto min-h-16 min-w-40 text-left flex-col items-start space-y-0.5 p-3"
               >
                 <div className="flex items-center gap-1 text-[11px] text-zinc-400">
                   <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
@@ -1340,7 +1340,7 @@ export const { GET, POST } = handlers;`}
                 variant="ghost"
                 size="sm"
                 onClick={() => selectItem(nextItem.id)}
-                className="group h-auto text-right flex-col items-end space-y-0.5 p-2"
+                className="docs-pagination group h-auto min-h-16 min-w-40 text-right flex-col items-end space-y-0.5 p-3"
               >
                 <div className="flex items-center justify-end gap-1 text-[11px] text-zinc-400">
                   <span>Next</span>

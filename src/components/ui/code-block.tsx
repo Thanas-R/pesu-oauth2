@@ -37,7 +37,7 @@ export function CodeBlock({
           className="absolute top-2.5 right-2.5 h-7 w-7 p-0 bg-white/80 dark:bg-zinc-800/80 hover:bg-white dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 opacity-0 group-hover:opacity-100 transition-opacity shadow-xs border border-black/5 dark:border-white/5"
         >
           {copied
-            ? <Check className="w-3.5 h-3.5 text-emerald-500" />
+            ? <Check className="w-3.5 h-3.5 text-zinc-600" />
             : <Copy className="w-3.5 h-3.5" />
           }
         </Button>

@@ -28,19 +28,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'relative inline-flex items-center justify-center font-medium rounded-xl select-none cursor-pointer transition-all duration-100 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]';
+      'ascii-button relative inline-flex items-center justify-center font-medium select-none cursor-pointer transition-colors duration-150 focus:outline-none disabled:opacity-50 disabled:pointer-events-none';
 
     const variants = {
-      primary:
-        'bg-blue-600 hover:bg-blue-500 text-white shadow-sm active:bg-blue-700 border border-blue-700/20',
-      secondary:
-        'bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15 text-zinc-900 dark:text-zinc-100 border border-black/5 dark:border-white/10 backdrop-blur-md',
-      destructive:
-        'bg-red-600 hover:bg-red-500 text-white shadow-sm active:bg-red-700 border border-red-700/20',
-      ghost:
-        'bg-transparent hover:bg-black/5 dark:hover:bg-white/10 text-zinc-800 dark:text-zinc-200',
-      outline:
-        'bg-transparent border border-black/15 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/5 text-zinc-900 dark:text-zinc-100',
+      primary: 'ascii-button-primary',
+      secondary: 'ascii-button-subtle',
+      destructive: 'ascii-button-danger',
+      ghost: 'border-transparent bg-transparent text-foreground hover:bg-surface',
+      outline: 'ascii-button-subtle',
     };
 
     const sizes = {

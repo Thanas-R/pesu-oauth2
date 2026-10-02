@@ -24,10 +24,10 @@ describe('LoginPage', () => {
 
   it('renders sign in form with inputs and submit button', () => {
     render(<LoginPage />);
-    expect(screen.getByText('Sign in with PESU')).toBeDefined();
+    expect(screen.getByRole('heading', { name: /sign in with pesu/i })).toBeDefined();
     expect(screen.getByLabelText('PRN or SRN')).toBeDefined();
     expect(screen.getByLabelText('Password')).toBeDefined();
-    expect(screen.getByRole('button', { name: /authenticate/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /sign in/i })).toBeDefined();
   });
 
   it('handles successful authentication and redirects to return_to', async () => {
@@ -46,7 +46,7 @@ describe('LoginPage', () => {
       target: { value: 'SecretPass123' },
     });
 
-    fireEvent.click(screen.getByRole('button', { name: /authenticate/i }));
+    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
 
     await waitFor(() => {
       expect(global.fetch).toHaveBeenCalledWith('/api/internal/auth/login', {
@@ -78,7 +78,7 @@ describe('LoginPage', () => {
       target: { value: 'WrongPass' },
     });
 
-    fireEvent.click(screen.getByRole('button', { name: /authenticate/i }));
+    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
 
     await waitFor(() => {
       expect(screen.getByText('Invalid Academy credentials')).toBeDefined();
@@ -97,7 +97,7 @@ describe('LoginPage', () => {
       target: { value: 'Pass' },
     });
 
-    fireEvent.click(screen.getByRole('button', { name: /authenticate/i }));
+    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
 
     await waitFor(() => {
       expect(screen.getByText('Network error')).toBeDefined();
@@ -114,7 +114,7 @@ describe('LoginPage', () => {
     render(<LoginPage />);
     fireEvent.change(screen.getByLabelText('PRN or SRN'), { target: { value: 'PES1UG20CS001' } });
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'pass' } });
-    fireEvent.click(screen.getByRole('button', { name: /authenticate/i }));
+    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
 
     await waitFor(() => {
       expect(mockPush).toHaveBeenCalledWith('/portal');
@@ -126,14 +126,14 @@ describe('LoginPage', () => {
       json: async () => ({}),
     });
 
-    fireEvent.click(screen.getByRole('button', { name: /authenticate/i }));
+    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
     await waitFor(() => {
       expect(screen.getByText('Authentication failed')).toBeDefined();
     });
 
     // 3. Rejection with non-Error (should display 'Invalid credentials')
     global.fetch = vi.fn().mockRejectedValueOnce('string error');
-    fireEvent.click(screen.getByRole('button', { name: /authenticate/i }));
+    fireEvent.click(screen.getByRole('button', { name: /sign in/i }));
     await waitFor(() => {
       expect(screen.getByText('Invalid credentials')).toBeDefined();
     });
